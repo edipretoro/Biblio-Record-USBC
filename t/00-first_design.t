@@ -14,4 +14,4 @@ sub get_usbc {
     return ' ' x 16;
 }
 
-done_testing( 1 );
+done_testing( 2 );
