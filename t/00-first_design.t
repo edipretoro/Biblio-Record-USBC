@@ -11,7 +11,7 @@ my @chars = split( '', $usbc );
 ok( $chars[0] =~ m/\d/, 'The first character of a USBC is a number' );
 
 sub get_usbc {
-    return ' ' x 16;
+    return '1' . ' ' x 15;
 }
 
 done_testing( 2 );
