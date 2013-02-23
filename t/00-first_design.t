@@ -5,7 +5,8 @@ use warnings;
 
 use Test::More;
 
-ok( length( get_usbc() ) == 16, 'A USBC code a string of 16 characters' );
+my $usbc = get_usbc();
+ok( length( $usbc ) == 16, 'A USBC code a string of 16 characters' );
 
 sub get_usbc {
     return ' ' x 16;
