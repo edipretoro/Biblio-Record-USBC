@@ -12,7 +12,7 @@ ok( $chars[0] =~ m/\d/, 'The first character of a USBC is a number' );
 ok( $chars[1] =~ m/\d/, 'The second character of a USBC is a number' );
 
 sub get_usbc {
-    return '1' . ' ' x 15;
+    return '11' . ' ' x 14;
 }
 
 done_testing( 3 );
