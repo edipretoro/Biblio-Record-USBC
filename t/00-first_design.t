@@ -15,4 +15,4 @@ sub get_usbc {
     return '1' . ' ' x 15;
 }
 
-done_testing( 2 );
+done_testing( 3 );
