@@ -1,0 +1,2 @@
+- Refactoring the tests to be coherent (using substr instead of split)
+- 
