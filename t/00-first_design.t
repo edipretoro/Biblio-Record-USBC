@@ -14,9 +14,10 @@ ok( substr( $usbc, 2, 3 ) =~ m/\d{3}/, 'The third to sixth characters of a USBC 
 ok( substr( $usbc, 5, 7 ) =~ m/[[:alpha:]]{7}/, 'The seventh to fourteenth characters of a USBC are alphanumerics' );
 ok( substr( $usbc, 12, 1) =~ m/\d/, 'The fifteenth character of a USBC is a number' );
 ok( substr( $usbc, 13, 2) =~ m/\d{2}/, 'The sixteenth to eighteenth characters of a USBC are numbers' );
+ok( substr( $usbc, 15, 2 ) =~ m/[[:alpha:]]{2}/, 'Testing the publisher part of a USBC are alphabetics' );
 
 sub get_usbc {
-    return '11111aaaaaaa1' . ' ' x 5;
+    return '11111aaaaaaa111' . ' ' x 3;
 }
 
-done_testing( 7 );
+done_testing( 8 );
