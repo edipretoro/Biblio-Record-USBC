@@ -18,7 +18,7 @@ ok( substr( $usbc, 15, 2 ) =~ m/[[:alpha:]]{2}/, 'Testing the publisher part of 
 ok( substr( $usbc, 17, 1 ) =~ m/[\d\w]/, 'Testing the check digit part of a USBC are alphanumeric' );
 
 sub get_usbc {
-    return '11111aaaaaaa111aa' . ' ' x 1;
+    return '11111aaaaaaa111aa1';
 }
 
 done_testing( 9 );
