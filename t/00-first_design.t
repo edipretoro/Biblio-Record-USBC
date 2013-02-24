@@ -15,7 +15,7 @@ ok( substr( $usbc, 5, 7 ) =~ m/\w{7}/, 'The seventh to fourteenth characters of 
 ok( substr( $usbc, 12, 1) =~ m/\d/, 'The fifteenth character of a USBC is a number' );
 
 sub get_usbc {
-    return '11111aaaaaaa' . ' ' x 6;
+    return '11111aaaaaaa1' . ' ' x 5;
 }
 
 done_testing( 6 );
