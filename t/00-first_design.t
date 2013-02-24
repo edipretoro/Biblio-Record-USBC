@@ -17,7 +17,7 @@ ok( substr( $usbc, 13, 2) =~ m/\d{2}/, 'The sixteenth to eighteenth characters o
 ok( substr( $usbc, 15, 2 ) =~ m/[[:alpha:]]{2}/, 'Testing the publisher part of a USBC are alphabetics' );
 
 sub get_usbc {
-    return '11111aaaaaaa111' . ' ' x 3;
+    return '11111aaaaaaa111aa' . ' ' x 1;
 }
 
 done_testing( 8 );
