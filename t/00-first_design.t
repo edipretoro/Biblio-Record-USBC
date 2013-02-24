@@ -17,4 +17,4 @@ sub get_usbc {
     return '11111' . ' ' x 11;
 }
 
-done_testing( 4 );
+done_testing( 5 );
