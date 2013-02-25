@@ -13,5 +13,6 @@ can_ok( 'Biblio::Record::USBC', qw( weight new ) );
 my $code = new_ok( 'Biblio::Record::USBC' );
 $code->weight( 10 );
 is( $code->weight, 10, 'Checking if the weight stored is correct' );
+is( $code->computed_weight, 0, 'Checking if the computed weight is correct' );
 
-done_testing( 4 );
+done_testing( 5 );
