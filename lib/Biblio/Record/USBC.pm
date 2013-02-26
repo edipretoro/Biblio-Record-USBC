@@ -28,6 +28,10 @@ has 'volume' => (
     is => 'rw'
 );
 
+has 'publisher' => (
+    is => 'rw'
+);
+
 sub computed_weight {
     my ( $self ) = @_;
     return substr( $self->weight, length( $self->weight ) - 1, 1);
@@ -101,6 +105,30 @@ sub computed_volume {
     } else {
         # don't know waht to do. It isn't decribe in the original article
     }
+}
+
+sub computed_publisher {
+    my ( $self ) = @_;
+
+    my @chars = split( '', $self->publisher );
+    my %freq;
+
+    map { $freq{ uc($_) }++ if m/[[:alpha:]]/ } @chars;
+
+    my %by_freq;
+    foreach my $char (keys %freq) {
+        my $lettres = $by_freq{$freq{$char}} || [];
+        push @{ $lettres }, $char;
+        @{ $lettres }  = sort @{ $lettres };
+        $by_freq{$freq{$char}} = $lettres;
+    }
+
+    my $code;
+    foreach (sort keys %by_freq) {
+        $code .= join('', @{ $by_freq{ $_ } });
+    }
+
+    return substr( $code, 0, 1 ) || "0";
 }
 
 1;
