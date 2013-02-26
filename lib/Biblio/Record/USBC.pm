@@ -59,7 +59,7 @@ sub computed_title {
         $code .= '0' x (7 - length( $code ));
     }
 
-    return $code;
+    return substr( $code, 0, 7 );
 }
 
 sub computed_edition {
