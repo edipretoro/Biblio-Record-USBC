@@ -102,7 +102,7 @@ sub computed_publisher {
 
     my $code = $self->_get_string_by_freq( $self->publisher );
 
-    return substr( $code, 0, 1 ) || "0";
+    return substr( $code, 0, 2 ) || "00";
 }
 
 sub computed_check_digit {
