@@ -10,6 +10,14 @@ BEGIN {
 }
 
 my $record = new_ok( 'Biblio::Record::USBC' );
+$record->language( 'English');
+$record->date( 1990 );
+$record->title( 'Test-driven development' );
+$record->edition( '' );
+$record->volume( '' );
+$record->publisher( 'Addison Wesley' );
+$record->check_digit( 'X' );
+
 my $usbc = $record->get_usbc();
 
 ok( length( $usbc ) == 18, 'A USBC code a string of 16 characters' );
