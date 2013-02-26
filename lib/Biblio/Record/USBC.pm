@@ -24,6 +24,10 @@ has 'edition' => (
     is => 'rw'
 );
 
+has 'volume' => (
+    is => 'rw'
+);
+
 sub computed_weight {
     my ( $self ) = @_;
     return substr( $self->weight, length( $self->weight ) - 1, 1);
@@ -74,6 +78,28 @@ sub computed_edition {
     } elsif ( $self->edition =~ /(\d+)/ ) {
         my $edition = $1;
         return substr( $edition, length( $edition ) - 1, 1 );
+    }
+}
+
+sub computed_volume {
+    my ( $self ) = @_;
+
+    my @digits;
+    while ( $self->volume =~ /(\d+)/g ) {
+        my $digit = $1;
+        push @digits, $digit;
+    }
+
+    if (scalar( @digits ) == 0) {
+        return "00";
+    } elsif (scalar( @digits ) == 1) {
+        return sprintf("%02s", substr( $digits[0], 0, 2 ));
+    } elsif (scalar( @digits ) == 2) {
+        my $vol = substr( $digits[0], length( $digits[0]) - 1, 1 );
+        my $num = substr( $digits[1], length( $digits[1]) - 1, 1 );
+        return "$vol$num";
+    } else {
+        # don't know waht to do. It isn't decribe in the original article
     }
 }
 
