@@ -5,7 +5,12 @@ use warnings;
 
 use Test::More;
 
-my $usbc = get_usbc();
+BEGIN {
+    use_ok( 'Biblio::Record::USBC' ) or exit;
+}
+
+my $record = new_ok( 'Biblio::Record::USBC' );
+my $usbc = $record->get_usbc();
 
 ok( length( $usbc ) == 18, 'A USBC code a string of 16 characters' );
 ok( substr( $usbc, 0, 1 ) =~ m/\d/, 'The first character of a USBC is a number' );
@@ -17,8 +22,4 @@ ok( substr( $usbc, 13, 2 ) =~ m/\d{2}/, 'The sixteenth to eighteenth characters 
 ok( substr( $usbc, 15, 2 ) =~ m/[[:alpha:]]{2}/, 'Testing the publisher part of a USBC are alphabetics' );
 ok( substr( $usbc, 17, 1 ) =~ m/[\d\w]/, 'Testing the check digit part of a USBC are alphanumeric' );
 
-sub get_usbc {
-    return '11111aaaaaaa111aa1';
-}
-
-done_testing( 9 );
+done_testing( 11 );
