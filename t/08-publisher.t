@@ -14,6 +14,6 @@ my $code = new_ok( 'Biblio::Record::USBC' );
 $code->publisher( 'O\'Reilly' );
 is( $code->publisher, 'O\'Reilly', 'Checking if the publisher stored is correct' );
 is( $code->computed_publisher, 'E', 'Checking if the computed publisher is correct' );
-is( length( $code->computed_publisher ), 1, 'Checking the size of a computed publisher' );
+is( length( $code->computed_publisher ), 2, 'Checking the size of a computed publisher' );
 
 done_testing( 6 );
