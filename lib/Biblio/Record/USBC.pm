@@ -66,10 +66,12 @@ sub computed_edition {
     my ( $self ) = @_;
 
     if ( $self->edition =~ /[^\d+]/ ) {
-        return 0;
+        return "0";
     } elsif ( $self->edition =~ /(\d+)/ ) {
         my $edition = $1;
         return substr( $edition, length( $edition ) - 1, 1 );
+    } else {
+        return "0";
     }
 }
 
