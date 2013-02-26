@@ -32,6 +32,10 @@ has 'publisher' => (
     is => 'rw'
 );
 
+has 'check_digit' => (
+    is => 'rw'
+);
+
 sub computed_weight {
     my ( $self ) = @_;
     return substr( $self->weight, length( $self->weight ) - 1, 1);
@@ -129,6 +133,10 @@ sub computed_publisher {
     }
 
     return substr( $code, 0, 1 ) || "0";
+}
+
+sub computed_check_digit {
+    return shift->check_digit;
 }
 
 1;
