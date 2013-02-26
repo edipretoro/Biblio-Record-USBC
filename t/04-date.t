@@ -14,5 +14,6 @@ my $code = new_ok( 'Biblio::Record::USBC' );
 $code->date( 1990 );
 is( $code->date, 1990, 'Checking if the date stored is correct' );
 is( $code->computed_date, 990, 'Checking if the computed date is correct' );
+is( length( $code->computed_date ), 3, 'Checking the size of a computed date' );
 
-done_testing( 5 );
+done_testing( 6 );
