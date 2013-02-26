@@ -2,3 +2,7 @@
 - [ ] adding a format method to be able to build your own USBC
 - [ ] Refactoring the computed_language method to use the mapping
   described in the original article
+- [ ] Adding a new_from_usmarc() method
+- [ ] Adding a new_from_unimarc() method
+- [ ] Adding a parameter to new_from_unimarc and new_from_usmarc to
+  be able to handle MARCXML
