@@ -133,4 +133,18 @@ sub _get_string_by_freq {
     return $code;
 }
 
+sub get_usbc {
+    my ( $self ) = @_;
+
+    return
+        $self->computed_weight .
+        $self->computed_language .
+        $self->computed_date .
+        $self->computed_title .
+        $self->computed_edition .
+        $self->computed_volume .
+        $self->computed_publisher .
+        $self->computed_check_digit;
+}
+
 1;
