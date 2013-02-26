@@ -20,6 +20,10 @@ has 'title' => (
     is => 'rw'
 );
 
+has 'edition' => (
+    is => 'rw'
+);
+
 sub computed_weight {
     my ( $self ) = @_;
     return substr( $self->weight, length( $self->weight ) - 1, 1);
@@ -60,6 +64,17 @@ sub computed_title {
     }
 
     return $code;
+}
+
+sub computed_edition {
+    my ( $self ) = @_;
+
+    if ( $self->edition =~ /[^\d+]/ ) {
+        return 0;
+    } elsif ( $self->edition =~ /(\d+)/ ) {
+        my $edition = $1;
+        return substr( $edition, length( $edition ) - 1, 1 );
+    }
 }
 
 1;
