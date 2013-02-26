@@ -147,4 +147,9 @@ sub get_usbc {
         $self->computed_check_digit;
 }
 
+after title => sub {
+    my ( $self, $title ) = @_;
+    $self->weight( length( $title ) );
+};
+
 1;
