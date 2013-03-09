@@ -42,7 +42,38 @@ sub computed_weight {
 }
 
 sub computed_language {
-    return 0;
+    my ( $self ) = @_;
+
+    my %languages_code = (
+        'english'       => 0,
+        'german'        => 1,
+        'germanic'      => 2,
+        'scandinavian'  => 2,
+        'dutch'         => 2,
+        'french'        => 3,
+        'italian'       => 4,
+        'portuguese'    => 4,
+        'spanish'       => 4,
+        'rumanian'      => 4,
+        'greek'         => 5,
+        'latin'         => 5,
+        'slavic'        => 6,
+        'east_european' => 6,
+        'finnish'       => 6,
+        'asian'         => 7,
+        'hebrew'        => 7,
+        'african'       => 8,
+        'arabic'        => 8,
+        'others'        => 9
+    );
+
+    my $computed_weight;
+    if (defined( $languages_code{ $self->language } )) {
+        $computed_weight = $languages_code{ $self->language };
+    } else {
+        $computed_weight = 9;
+    }
+    return $computed_weight;
 }
 
 sub computed_date {
