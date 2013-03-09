@@ -100,7 +100,7 @@ sub computed_language {
 
 sub computed_date {
     my ( $self ) = @_;
-    return substr( $self->date, length( $self->date ) - 3, 3);
+    return substr( $self->date, length( $self->date ) - 3, 3) || '000';
 }
 
 sub computed_title {
@@ -108,8 +108,10 @@ sub computed_title {
 
     my $code = $self->_get_string_by_freq( $self->title );
 
-    if (length( $code ) < 7) {
+    if (defined($code) and length( $code ) < 7) {
         $code .= '0' x (7 - length( $code ));
+    } else {
+        $code = '0' x 7;
     }
 
     return substr( $code, 0, 7 );
@@ -155,7 +157,13 @@ sub computed_publisher {
 
     my $code = $self->_get_string_by_freq( $self->publisher );
 
-    return substr( $code, 0, 2 ) || "00";
+    my $computed_publisher;
+    if (defined( $code )) {
+        $computed_publisher = substr( $code, 0, 2 );
+    } else {
+        $computed_publisher = '00';
+    }
+    return $computed_publisher;
 }
 
 sub computed_check_digit {
