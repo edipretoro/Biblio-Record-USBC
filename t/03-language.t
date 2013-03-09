@@ -17,7 +17,7 @@ is( $code->computed_language, 0, 'Checking if the computed language is correct' 
 
 $code->language( 'german' );
 is( $code->language, 'german', 'Checking if the language stored is correct' );
-is( $code->computed_language, 0, 'Checking if the computed language is correct' );
+is( $code->computed_language, 1, 'Checking if the computed language is correct' );
 
 is( length( $code->computed_language ), 1, 'Checking the size of a computed language' );
 
