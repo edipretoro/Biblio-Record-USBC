@@ -7,3 +7,4 @@
 - [ ] Adding a parameter to new_from_unimarc and new_from_usmarc to
   be able to handle MARCXML
 - [ ] add a better error handling!
+- [ ] be able to handle an empty record
