@@ -36,6 +36,27 @@ has 'check_digit' => (
     is => 'rw'
 );
 
+has 'format_string' => (
+    is => 'rw',
+    default => sub { '%w%l%d%t%e%v%p%c' }
+);
+
+has 'format_mapping' => (
+    is => 'rw',
+    default => sub {
+        return {
+            '%w' => 'weight',
+            '%l' => 'language',
+            '%d' => 'date',
+            '%t' => 'title',
+            '%e' => 'edition',
+            '%v' => 'volume',
+            '%p' => 'publisher',
+            '%c' => 'check_digit'
+        }
+    }
+);
+
 sub computed_weight {
     my ( $self ) = @_;
     $self->weight( length( $self->title ) );
@@ -168,15 +189,17 @@ sub _get_string_by_freq {
 sub get_usbc {
     my ( $self ) = @_;
 
-    return
-        $self->computed_weight .
-        $self->computed_language .
-        $self->computed_date .
-        $self->computed_title .
-        $self->computed_edition .
-        $self->computed_volume .
-        $self->computed_publisher .
-        $self->computed_check_digit;
+    my $usbc;
+    my $mapping = $self->format_mapping;
+    my $cpt = 0;
+    while ( $cpt < length( $self->format_string ) ) {
+        my $pattern = substr( $self->format_string, $cpt, 2 );
+        my $element = 'computed_' . $mapping->{$pattern};
+        $usbc .= $self->$element;
+        $cpt += 2;
+    }
+
+    return $usbc;
 }
 
 after title => sub {
