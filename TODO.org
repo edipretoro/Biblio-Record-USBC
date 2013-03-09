@@ -1,6 +1,6 @@
 - [X] Refactoring the tests to be coherent (using substr instead of split)
 - [ ] adding a format method to be able to build your own USBC
-- [ ] Refactoring the computed_language method to use the mapping
+- [X] Refactoring the computed_language method to use the mapping
   described in the original article
 - [ ] Adding a new_from_usmarc() method
 - [ ] Adding a new_from_unimarc() method
