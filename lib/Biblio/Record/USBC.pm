@@ -38,7 +38,8 @@ has 'check_digit' => (
 
 sub computed_weight {
     my ( $self ) = @_;
-    return substr( $self->weight, length( $self->weight ) - 1, 1);
+    $self->weight( length( $self->title ) );
+    return $self->weight % 10;
 }
 
 sub computed_language {
