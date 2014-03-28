@@ -108,8 +108,12 @@ sub computed_title {
 
     my $code = $self->_get_string_by_freq( $self->title );
 
-    if (defined($code) and length( $code ) < 7) {
+    if ( defined($code) ) {
+      if ( length( $code ) < 7 ) {
         $code .= '0' x (7 - length( $code ));
+      }
+    } else {
+      $code = '0' x 7;
     }
 
     return substr( $code, 0, 7 );
