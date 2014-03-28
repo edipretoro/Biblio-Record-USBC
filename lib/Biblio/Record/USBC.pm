@@ -110,8 +110,6 @@ sub computed_title {
 
     if (defined($code) and length( $code ) < 7) {
         $code .= '0' x (7 - length( $code ));
-    } else {
-        $code = '0' x 7;
     }
 
     return substr( $code, 0, 7 );
