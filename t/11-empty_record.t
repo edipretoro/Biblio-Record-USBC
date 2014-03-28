@@ -16,9 +16,9 @@ $record->title( '' );
 $record->edition( '' );
 $record->volume( '' );
 $record->publisher( '' );
-$record->check_digit( 'X' );
+$record->check_digit();
 
 my $usbc = $record->get_usbc();
-is( $usbc, '09000000000000000X', 'Checking an empty record' );
+is( $usbc, '090000000000000001', 'Checking an empty record' );
 
 done_testing( 3 );
