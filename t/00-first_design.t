@@ -20,7 +20,7 @@ $record->check_digit( 'X' );
 
 my $usbc = $record->get_usbc();
 
-ok( length( $usbc ) == 18, 'A USBC code a string of 16 characters' );
+ok( length( $usbc ) == 18, 'A USBC code a string of 18 characters' );
 ok( substr( $usbc, 0, 1 ) =~ m/\d/, 'The first character of a USBC is a number' );
 ok( substr( $usbc, 1, 1 ) =~ m/\d/, 'The second character of a USBC is a number' );
 ok( substr( $usbc, 2, 3 ) =~ m/\d{3}/, 'The third to sixth characters of a USBC are numbers' );
