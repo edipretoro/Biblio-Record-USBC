@@ -197,12 +197,19 @@ sub _get_string_by_freq {
 }
 
 sub get_usbc {
-    my ( $self ) = @_;
+    my ( $self, $without_check ) = @_;
+    my $check;
+
+    if (defined $without_check) {
+      $check = 2;
+    } else {
+      $check = 0;
+    }
 
     my $usbc;
     my $mapping = $self->format_mapping;
     my $cpt = 0;
-    while ( $cpt < length( $self->format_string ) ) {
+    while ( $cpt < length( $self->format_string ) - $check ) {
         my $pattern = substr( $self->format_string, $cpt, 2 );
         my $element = 'computed_' . $mapping->{$pattern};
         $usbc .= $self->$element;
