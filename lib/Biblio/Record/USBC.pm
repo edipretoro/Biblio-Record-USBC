@@ -2,6 +2,9 @@ use strict;
 use warnings;
 package Biblio::Record::USBC;
 
+use Algorithm::LUHN;
+Algorithm::LUHN::valid_chars( map { $_ => ord( $_ ) - ord( 'A' ) + 10 } 'A' .. 'Z' );
+
 use Moo;
 
 has 'weight' => (
@@ -29,10 +32,6 @@ has 'volume' => (
 );
 
 has 'publisher' => (
-    is => 'rw'
-);
-
-has 'check_digit' => (
     is => 'rw'
 );
 
@@ -169,7 +168,7 @@ sub computed_publisher {
 }
 
 sub computed_check_digit {
-    return shift->check_digit;
+    return Algorithm::LUHN::check_digit( shift->get_usbc( 1 ) );
 }
 
 sub _get_string_by_freq {
