@@ -16,7 +16,6 @@ $record->title( 'Test-driven development' );
 $record->edition( '' );
 $record->volume( '' );
 $record->publisher( 'Addison Wesley' );
-$record->check_digit( 'X' );
 
 my $usbc = $record->get_usbc();
 
