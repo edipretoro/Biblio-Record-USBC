@@ -1,3 +1,4 @@
+# ABSTRACT: Computing an Universal Standard Bibliographic Code (USBC) for a bibliographic record
 use strict;
 use warnings;
 package Biblio::Record::USBC;
