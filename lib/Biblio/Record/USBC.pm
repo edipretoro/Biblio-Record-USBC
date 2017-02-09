@@ -3,6 +3,7 @@ use strict;
 use warnings;
 package Biblio::Record::USBC;
 
+use Text::Unidecode;
 use Algorithm::LUHN;
 Algorithm::LUHN::valid_chars( map { $_ => ord( $_ ) - ord( 'A' ) + 10 } 'A' .. 'Z' );
 
@@ -177,7 +178,7 @@ sub computed_check_digit {
 sub _get_string_by_freq {
 	my ( $self, $string ) = @_;
 
-	my @chars = split( '', $string );
+	my @chars = split( '', unidecode( $string ) );
 	my %freq;
 
 	map { $freq{ uc($_) }++ if m/[[:alpha:]]/ } @chars;
