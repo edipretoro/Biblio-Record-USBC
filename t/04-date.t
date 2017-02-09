@@ -15,5 +15,13 @@ $code->date( 1990 );
 is( $code->date, 1990, 'Checking if the date stored is correct' );
 is( $code->computed_date, 990, 'Checking if the computed date is correct' );
 is( length( $code->computed_date ), 3, 'Checking the size of a computed date' );
+$code->date( '[1990]' );
+is( $code->date, '[1990]', 'Checking if the date stored is correct' );
+is( $code->computed_date, 990, 'Checking if the computed date is correct' );
+is( length( $code->computed_date ), 3, 'Checking the size of a computed date' );
+$code->date( '1990' );
+is( $code->date, '1990', 'Checking if the date stored is correct' );
+is( $code->computed_date, 990, 'Checking if the computed date is correct' );
+is( length( $code->computed_date ), 3, 'Checking the size of a computed date' );
 
-done_testing( 6 );
+done_testing( 12 );
