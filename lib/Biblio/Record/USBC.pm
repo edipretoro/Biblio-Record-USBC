@@ -102,7 +102,11 @@ sub computed_language {
 sub computed_date {
 	my ($self) = @_;
 	$self->date =~ /(?<date>\d+)/;
-	$self->date( sprintf("%d", $+{date}) ) if defined $+{date};
+	if (defined $+{date}) {
+		$self->date( sprintf("%d", $+{date}) );
+	} else {
+		$self->date ( '000' );
+	}
 	return substr( $self->date, length( $self->date ) - 3, 3 ) || '000';
 }
 
