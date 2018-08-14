@@ -191,13 +191,12 @@ sub _get_string_by_freq {
 	foreach my $char (keys %freq) {
 		my $lettres = $by_freq{$freq{$char}} || [];
 		push @{ $lettres }, $char;
-		@{ $lettres }  = sort @{ $lettres };
 		$by_freq{$freq{$char}} = $lettres;
 	}
 
 	my $code;
 	foreach (sort keys %by_freq) {
-		$code .= join('', @{ $by_freq{ $_ } });
+		$code .= join('', sort @{ $by_freq{ $_ } });
 	}
 
 	return $code;
