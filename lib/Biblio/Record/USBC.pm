@@ -182,10 +182,10 @@ sub computed_check_digit {
 sub _get_string_by_freq {
 	my ( $self, $string ) = @_;
 
-	my @chars = split( '', unidecode( $string ) );
+	my @chars = split( '', uc(unidecode( $string )) );
 	my %freq;
 
-	map { $freq{ uc($_) }++ if m/[[:alpha:]]/ } @chars;
+	map { $freq{ $_ }++ if m/[[:alpha:]]/ } @chars;
 
 	my %by_freq;
 	foreach my $char (keys %freq) {
